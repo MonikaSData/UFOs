@@ -44,6 +44,6 @@ Filters that are not applicable can be left empty.
 ## Summary
 The current filters on the webpage offers good functionality for the users by giving them the ability to interact with the data; however, there are ways to improve the functionality. 
 
-*Examples:*
+- *Examples:*
     - Adding restrictions on the data types entered in the filters (date only for date filter)
     - To ensure that user only chooses filters included in the dataset incorporate drop-downs instead of text fields. 
