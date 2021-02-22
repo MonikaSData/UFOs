@@ -24,7 +24,7 @@ function buildTable(data) {
 }
 
 // 1. Create a variable to keep track of all the filters as an object.
-var filters = {};
+var filters = [d3.select("#datetime"), d3.select("#state"), d3.select("#city"), d3.select("#country"), d3.select("#shape")];
 
 // 3. Use this function to update the filters. 
 function updateFilters() {
@@ -64,15 +64,15 @@ function updateFilters() {
   
     // 9. Loop through all of the filters and keep any data that
     // matches the filter values
-    filters.forEach(function (filter){
-      let filterName = Object.keys(filter)
-      let filterText = Object.values(filter)
-      //if(filterText)
-      //{
-          // we lowecase the values just in case... we also are accomodating partial searches with .includes
-          //filteredData = filteredData.filter(row => row.datetime === date);
-      filteredData = filteredData.filter(row => row[filterName].includes(filterText.toLowerCase()));
-     // }
+    filters.forEach(filter => {
+      var filterValue = filter.property("value");
+      var filterName = filter.property("id");
+      if(filterValue != "")
+      {
+          //lowecase user input values to match data 
+          //use .includes to account for partial searches 
+          filteredData = filteredData.filter(row => row[filterName].includes(filterValue.toLowerCase()));
+      }
     });
      
     // 10. Finally, rebuild the table using the filtered data
